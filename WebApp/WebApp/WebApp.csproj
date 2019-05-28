@@ -33,7 +33,8 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -263,6 +264,17 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\DayType.cs" />
+    <Compile Include="Models\Line.cs" />
+    <Compile Include="Models\Pricelist.cs" />
+    <Compile Include="Models\Station.cs" />
+    <Compile Include="Models\Ticket.cs" />
+    <Compile Include="Models\TicketPrice.cs" />
+    <Compile Include="Models\TicketType.cs" />
+    <Compile Include="Models\Timetable.cs" />
+    <Compile Include="Models\TimetableType.cs" />
+    <Compile Include="Models\UserType.cs" />
+    <Compile Include="Models\Vehicles.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\Repository\IRepository.cs" />
     <Compile Include="Persistence\Repository\Repository.cs" />
