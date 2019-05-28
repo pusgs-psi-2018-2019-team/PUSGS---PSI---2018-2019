@@ -13,7 +13,7 @@ namespace WebApp.Models
         [Required]
         public int SerialNumber { get; set; }
 
-        public List<Vehicles> Vehicles { get; set; }
+        public List<Vehicle> Vehicles { get; set; }
         public List<Station> Stations { get; set; }
         public List<Timetable> Timetables { get; set; }
     }

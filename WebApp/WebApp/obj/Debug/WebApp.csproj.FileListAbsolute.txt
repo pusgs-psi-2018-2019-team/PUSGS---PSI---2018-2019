@@ -146,3 +146,9 @@ C:\Users\e393-2015\Desktop\WebApp\WebApp\WebApp\obj\Debug\WebApp.csproj.Generate
 C:\Users\e393-2015\Desktop\WebApp\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 C:\Users\e393-2015\Desktop\WebApp\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\e393-2015\Desktop\WebApp\WebApp\WebApp\obj\Debug\WebApp.pdb
+D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
+D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.InitialMigration.resources
+D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.csproj.GenerateResource.cache
+D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
+D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.dll
+D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.pdb

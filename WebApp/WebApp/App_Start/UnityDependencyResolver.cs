@@ -69,6 +69,19 @@ namespace WebApp.App_Start
             // container.RegisterType<IProductRepository, ProductRepository>();
            
             container.RegisterType<DbContext, ApplicationDbContext>(new PerResolveLifetimeManager());
+
+            container.RegisterType<IRepositoryVehicle, RepositoryVehicle>();
+            container.RegisterType<IRepositoryUserType, RepositoryUserType>();
+            container.RegisterType<IRepositoryTimetableType, RepositoryTimetableType>();
+            container.RegisterType<IRepositoryTimetable, RepositoryTimetable>();
+            container.RegisterType<IRepositoryTicketType, RepositoryTicketType>();
+            container.RegisterType<IRepositoryTicketPrice, RepositoryTicketPrice>();
+            container.RegisterType<IRepositoryTicket, RepositoryTicket>();
+            container.RegisterType<IRepositoryStation, RepositoryStation>();
+            container.RegisterType<IRepositoryPricelist, RepositoryPricelist>();
+            container.RegisterType<IRepositoryLine, RepositoryLine>();
+            container.RegisterType<IRepositoryDayType, RepositoryDayType>();
+
             container.RegisterType<IUnitOfWork, DemoUnitOfWork>();
         }
 
