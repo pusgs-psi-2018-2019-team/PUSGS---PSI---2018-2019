@@ -12,7 +12,7 @@ namespace WebApp.Persistence
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 
-        public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<UserType> UserType { get; set; }
         public DbSet<DayType> DayType { get; set; }
         public DbSet<Line> Line { get; set; }
         public DbSet<Pricelist> Pricelist { get; set; }

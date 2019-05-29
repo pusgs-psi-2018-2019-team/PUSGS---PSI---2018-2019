@@ -1,4 +1,4 @@
-namespace WebApp.Migrations
+﻿namespace WebApp.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
@@ -64,6 +64,94 @@ namespace WebApp.Migrations
                 var user = new ApplicationUser() { Id = "appu", UserName = "appu@yahoo.com", Email = "appu@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu123!") };
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "AppUser");
+            }
+
+            //  DayType
+            if (!context.DayType.Any(d => d.Name == "Radni dan"))
+            {
+                DayType dayType = new DayType() { Name = "Radni dan" };
+                context.DayType.Add(dayType);
+                context.SaveChanges();
+            }
+
+            if (!context.DayType.Any(d => d.Name == "Subota"))
+            {
+                DayType dayType = new DayType() { Name = "Subota" };
+                context.DayType.Add(dayType);
+                context.SaveChanges();
+            }
+
+            if (!context.DayType.Any(d => d.Name == "Nedelja"))
+            {
+                DayType dayType = new DayType() { Name = "Nedelja" };
+                context.DayType.Add(dayType);
+                context.SaveChanges();
+            }
+
+            // TicketType
+            if (!context.TicketType.Any(t => t.Name == "Vremenska karta"))
+            {
+                TicketType ticketType = new TicketType() { Name = "Vremenska karta" };
+                context.TicketType.Add(ticketType);
+                context.SaveChanges();
+            }
+
+            if (!context.TicketType.Any(t => t.Name == "Dnevna karta"))
+            {
+                TicketType ticketType = new TicketType() { Name = "Dnevna karta" };
+                context.TicketType.Add(ticketType);
+                context.SaveChanges();
+            }
+
+            if (!context.TicketType.Any(t => t.Name == "Mesečna karta"))
+            {
+                TicketType ticketType = new TicketType() { Name = "Mesečna karta" };
+                context.TicketType.Add(ticketType);
+                context.SaveChanges();
+            }
+
+            if (!context.TicketType.Any(t => t.Name == "Godišnja karta"))
+            {
+                TicketType ticketType = new TicketType() { Name = "Godišnja karta" };
+                context.TicketType.Add(ticketType);
+                context.SaveChanges();
+            }
+
+            //  UserType
+            if (!context.UserType.Any(u => u.Name == "Đak"))
+            {
+                UserType userType = new UserType() { Name = "Đak" };
+                context.UserType.Add(userType);
+                context.SaveChanges();
+            }
+
+            if (!context.UserType.Any(u => u.Name == "Penzioner"))
+            {
+                UserType userType = new UserType() { Name = "Penzioner" };
+                context.UserType.Add(userType);
+                context.SaveChanges();
+            }
+
+            if (!context.UserType.Any(u => u.Name == "Regularan"))
+            {
+                UserType userType = new UserType() { Name = "Regularan" };
+                context.UserType.Add(userType);
+                context.SaveChanges();
+            }
+
+            //  TimetableTzpe
+            if (!context.TimetableType.Any(t => t.Name == "Gradski"))
+            {
+                TimetableType timetableType = new TimetableType() { Name = "Gradski" };
+                context.TimetableType.Add(timetableType);
+                context.SaveChanges();
+            }
+
+            if (!context.TimetableType.Any(t => t.Name == "Prigradski"))
+            {
+                TimetableType timetableType = new TimetableType() { Name = "Prigradski" };
+                context.TimetableType.Add(timetableType);
+                context.SaveChanges();
             }
         }
     }
