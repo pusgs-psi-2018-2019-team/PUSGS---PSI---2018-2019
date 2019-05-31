@@ -7,9 +7,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AuthHttpService } from 'src/services/http/auth.service';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { HomeComponent } from './home/home.component';
 
 const routes : Routes = [
   {path : "login", component: LoginComponent},
+  {path : "home", component: HomeComponent},
   {path : "", component: LoginComponent, pathMatch:"full"},
   {path : "**", redirectTo: "login"},
 ]
@@ -17,7 +19,8 @@ const routes : Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

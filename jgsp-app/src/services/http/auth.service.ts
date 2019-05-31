@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthHttpService{
@@ -8,16 +9,27 @@ export class AuthHttpService{
 
     }
 
-    logIn(username: string, password: string){
-        let data = `username=${username}&password=${password}&grant_type=password`;
-        let httpOptions={
-            headers:{
-                "Content-type": "application/x-www-form-urlencoded"
+    logIn(username: string, password: string) : Observable<any>{
+
+        return Observable.create((observer) => {
+
+            let data = `username=${username}&password=${password}&grant_type=password`;
+            let httpOptions={
+                headers:{
+                    "Content-type": "application/x-www-form-urlencoded"
+                }
             }
-        }
-        this.http.post<any>(this.base_url + "/oauth/token",data,httpOptions).subscribe(data => {
-            localStorage.jwt = data.access_token;
-        },
-        err => console.log(err));
+            this.http.post<any>(this.base_url + "/oauth/token",data,httpOptions).subscribe(data => {
+                localStorage.jwt = data.access_token;
+                observer.next("uspesno");
+                observer.complete();
+            },
+            err => {
+                console.log(err);
+                observer.next("neuspesno");
+                observer.complete();
+            });
+        });
+     
     }
 }
