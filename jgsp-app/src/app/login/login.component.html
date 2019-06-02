@@ -1,9 +1,7 @@
 <form #f="ngForm" (submit)="login(f.value,f)">
   <input name="username" ngModel/>
-  <br/>
   <input name="password" type="password" ngModel/>
-  <br/>
-  <input type="submit"/>
+  <input type="submit" value="Uloguj se"/>
 </form>
 
-<a routerLink="/home">Nastavi bez logovanja</a>
+<!--<a routerLink="/home">Nastavi bez logovanja</a>-->
