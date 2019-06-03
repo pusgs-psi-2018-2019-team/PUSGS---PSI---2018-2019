@@ -1,0 +1,31 @@
+<form #f="ngForm" (submit)="register(f.value,f)">
+  <label>Username</label>
+  <br/>
+  <input name="Username" ngModel/>
+  <br/>
+  <label>Password</label>
+  <br/>
+  <input name="Password" type="password" ngModel/>
+  <br/>
+  <label>Confirm password</label>
+  <br/>
+  <input name="ConfirmPassword" type="password" ngModel/>
+  <br/>
+  <label>Email</label>
+  <br/>
+  <input name="Email" ngModel/>
+  <br/>
+  <label>Name</label>
+  <br/>
+  <input name="Name" ngModel/>
+  <br/>
+  <label>Surname</label>
+  <br/>
+  <input name="Surname" ngModel/>
+  <br/>
+  <label>Address</label>
+  <br/>
+  <input name="Address" ngModel/>
+  <br/>  
+  <input type="submit" value="Registruj se"/>
+</form>

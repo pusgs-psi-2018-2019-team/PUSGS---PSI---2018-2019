@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/user';
 
 @Injectable()
 export class AuthHttpService{
@@ -21,6 +22,36 @@ export class AuthHttpService{
             }
             this.http.post<any>(this.base_url + "/oauth/token",data,httpOptions).subscribe(data => {
                 localStorage.jwt = data.access_token;
+                observer.next("uspesno");
+                localStorage.setItem("loggedUser",username);
+                observer.complete();
+            },
+            err => {
+                console.log(err);
+                observer.next("neuspesno");
+                observer.complete();
+            });
+        });
+     
+    }
+
+    logOut(): Observable<any>{
+        return Observable.create((observer) => {
+            localStorage.setItem("loggedUser",undefined);
+            localStorage.jwt = undefined;
+        });
+    }
+
+    register(user: User) : Observable<any>{
+
+        return Observable.create((observer) => {
+            let data = user;
+            let httpOptions={
+                headers:{
+                    "Content-type": "application/json"
+                }
+            }
+            this.http.post<any>(this.base_url + "/api/Account/Register",data,httpOptions).subscribe(data => {
                 observer.next("uspesno");
                 observer.complete();
             },
