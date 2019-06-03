@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(user: User,form: NgForm){
-    this.http.logIn(user.username,user.password).subscribe(temp => {
+    this.http.logIn(user.Username,user.Password).subscribe(temp => {
       if(temp == "uspesno")
       {
         console.log(temp);
