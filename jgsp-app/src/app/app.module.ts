@@ -8,11 +8,12 @@ import { LoginComponent } from './login/login.component';
 import { AuthHttpService } from 'src/services/http/auth.service';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { HomeComponent } from './home/home.component';
+import { UiModule } from './ui/ui.module';
 
 const routes : Routes = [
   {path : "login", component: LoginComponent},
   {path : "home", component: HomeComponent},
-  {path : "", component: LoginComponent, pathMatch:"full"},
+  {path : "", component: HomeComponent, pathMatch:"full"},
   {path : "**", redirectTo: "login"},
 ]
 
@@ -26,7 +27,8 @@ const routes : Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),    
+    RouterModule.forRoot(routes),
+    UiModule,    
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService],
   bootstrap: [AppComponent]
