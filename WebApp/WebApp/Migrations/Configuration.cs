@@ -154,7 +154,81 @@
                 userManager.AddToRole(user.Id, "AppUser");
             }
 
-            
+            // Pricelist
+            if (!context.Pricelist.Any(t => t.Id == 1))
+            {
+                Pricelist pricelist = new Pricelist() { Id = 1, From = DateTime.Now, To = DateTime.Now };
+                context.Pricelist.Add(pricelist);
+                context.SaveChanges();
+            }
+
+            if (!context.Pricelist.Any(t => t.Id == 2))
+            {
+                Pricelist pricelist = new Pricelist() { Id = 2, From = DateTime.Now, To = DateTime.Now };
+                context.Pricelist.Add(pricelist);
+                context.SaveChanges();
+            }
+
+            // Stations
+            if (!context.Station.Any(t => t.Name == "Prva"))
+            {
+                Station station = new Station() { Id = 1, Name = "Prva", Address = "Adresa Prve", X = 22, Y = 35 };
+                context.Station.Add(station);
+                context.SaveChanges();
+            }
+
+            if (!context.Station.Any(t => t.Name == "Druga"))
+            {
+                Station station = new Station() { Id = 1, Name = "Prva", Address = "Adresa Druge", X = 22, Y = 35 };
+                context.Station.Add(station);
+                context.SaveChanges();
+            }
+
+            // Timetable
+
+            if (!context.Timetable.Any(t => t.Id == 1))
+            {
+                Timetable timetable = new Timetable() { Id = 1, TimetableTypeId = 1,DayTypeId = 1 };
+                context.Timetable.Add(timetable);
+                context.SaveChanges();
+            }
+
+            if (!context.Timetable.Any(t => t.Id == 2))
+            {
+                Timetable timetable = new Timetable() { Id = 2, TimetableTypeId = 2, DayTypeId = 2 };
+                context.Timetable.Add(timetable);
+                context.SaveChanges();
+            }
+
+            //  line
+            if (!context.Line.Any(t => t.Id == 1))
+            {
+                Line line = new Line() { Id = 1, SerialNumber = 1 };
+                context.Line.Add(line);
+                context.SaveChanges();
+            }
+
+            if (!context.Line.Any(t => t.Id == 2))
+            {
+                Line line = new Line() { Id = 2, SerialNumber = 2 };
+                context.Line.Add(line);
+                context.SaveChanges();
+            }
+
+            //  ticketPrice
+            if (!context.TicketPrice.Any(t => t.Id == 1))
+            {
+                TicketPrice ticketPrice = new TicketPrice() { Id = 1, Price = 50, PricelistId = 1, TicketTypeId = 1};
+                context.TicketPrice.Add(ticketPrice);
+                context.SaveChanges();
+            }
+
+            if (!context.TicketPrice.Any(t => t.Id == 2))
+            {
+                TicketPrice ticketPrice = new TicketPrice() { Id = 2, Price = 50, PricelistId = 1, TicketTypeId = 1 };
+                context.TicketPrice.Add(ticketPrice);
+                context.SaveChanges();
+            }
         }
     }
 }
