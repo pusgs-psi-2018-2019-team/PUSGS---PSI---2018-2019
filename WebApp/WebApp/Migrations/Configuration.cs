@@ -157,14 +157,14 @@
             // Pricelist
             if (!context.Pricelist.Any(t => t.Id == 1))
             {
-                Pricelist pricelist = new Pricelist() { Id = 1, From = DateTime.Now, To = DateTime.Now };
+                Pricelist pricelist = new Pricelist() { Id = 1, From = DateTime.Now.ToString(), To = DateTime.Now.ToString() };
                 context.Pricelist.Add(pricelist);
                 context.SaveChanges();
             }
 
             if (!context.Pricelist.Any(t => t.Id == 2))
             {
-                Pricelist pricelist = new Pricelist() { Id = 2, From = DateTime.Now, To = DateTime.Now };
+                Pricelist pricelist = new Pricelist() { Id = 2, From = DateTime.Now.ToString(), To = DateTime.Now.ToString() };
                 context.Pricelist.Add(pricelist);
                 context.SaveChanges();
             }

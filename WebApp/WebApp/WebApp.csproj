@@ -260,9 +260,15 @@
     <Compile Include="Migrations\201905222056072_InitialMigration.Designer.cs">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905300914190_JgspMigration.cs" />
-    <Compile Include="Migrations\201905300914190_JgspMigration.Designer.cs">
-      <DependentUpon>201905300914190_JgspMigration.cs</DependentUpon>
+<<<<<<< HEAD
+    <Compile Include="Migrations\201906041724422_JgspMigration.cs" />
+    <Compile Include="Migrations\201906041724422_JgspMigration.Designer.cs">
+      <DependentUpon>201906041724422_JgspMigration.cs</DependentUpon>
+=======
+    <Compile Include="Migrations\201906041650141_JgspMigration.cs" />
+    <Compile Include="Migrations\201906041650141_JgspMigration.Designer.cs">
+      <DependentUpon>201906041650141_JgspMigration.cs</DependentUpon>
+>>>>>>> 26ade8c8f39c3391f5fef6989f0cbfd65c7d494b
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -407,8 +413,13 @@
     <EmbeddedResource Include="Migrations\201905222056072_InitialMigration.resx">
       <DependentUpon>201905222056072_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905300914190_JgspMigration.resx">
-      <DependentUpon>201905300914190_JgspMigration.cs</DependentUpon>
+<<<<<<< HEAD
+    <EmbeddedResource Include="Migrations\201906041724422_JgspMigration.resx">
+      <DependentUpon>201906041724422_JgspMigration.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Migrations\201906041650141_JgspMigration.resx">
+      <DependentUpon>201906041650141_JgspMigration.cs</DependentUpon>
+>>>>>>> 26ade8c8f39c3391f5fef6989f0cbfd65c7d494b
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

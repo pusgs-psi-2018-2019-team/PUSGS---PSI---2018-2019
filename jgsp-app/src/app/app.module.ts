@@ -11,11 +11,13 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { UiModule } from './ui/ui.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RedvoznjeComponent } from './redvoznje/redvoznje.component';
 
 const routes : Routes = [
   {path : "login", component: LoginComponent},
   {path : "home", component: HomeComponent},
   {path : "register", component: RegisterComponent},
+  {path : "redvoznje", component: RedvoznjeComponent},
   {path : "", component: LoginComponent, pathMatch:"full"},
   {path : "**", redirectTo: "login"},
 ]
@@ -25,7 +27,8 @@ const routes : Routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    RedvoznjeComponent
   ],
   imports: [
     BrowserModule,

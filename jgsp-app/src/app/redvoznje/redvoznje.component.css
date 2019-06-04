@@ -1,0 +1,30 @@
+.cenovnik{
+	border-collapse:collapse;
+}
+
+.cenovnik th{
+	background-color:#75C4EB;
+	color:#FFF;
+	padding:4px;
+	border:1px solid #fff;
+	
+}
+
+.cenovnik td{
+	background-color:#C6EBFB;
+	color:#2D85BC;
+	border:1px solid #fff;
+	padding:4px;
+}
+
+.cenovnik-form{
+	border-collapse:collapse;
+}
+
+
+.cenovnik-form tr{
+	background-color:#C6EBFB;
+	background-color:#EDF0F2;
+	color:#2D85BC;
+	border:1px solid #fff;
+}
