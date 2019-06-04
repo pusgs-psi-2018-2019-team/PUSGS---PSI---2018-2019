@@ -62,6 +62,10 @@ namespace WebApp.Models
 		public string Surname { get; set; }
 
 		[Required]
+		[Display(Name = "Date")]
+		public string Date { get; set; }
+
+		[Required]
 		[Display(Name = "Address")]
 		public string Address { get; set; }
 	}
