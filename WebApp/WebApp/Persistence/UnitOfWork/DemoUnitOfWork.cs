@@ -19,29 +19,36 @@ namespace WebApp.Persistence.UnitOfWork
         }
 
         [Dependency]
-        public List<DayType> DayType { get; set; }
-        [Dependency]
-        public List<Line> Line { get; set; }
-        [Dependency]
-        public List<Pricelist> Pricelist { get; set; }
-        [Dependency]
-        public List<Station> Station { get; set; }
-        [Dependency]
-        public List<Ticket> Ticket { get; set; }
-        [Dependency]
-        public List<TicketPrice> TicketPrice { get; set; }
-        [Dependency]
-        public List<TicketType> TicketType { get; set; }
-        [Dependency]
-        public List<Timetable> Timetable { get; set; }
-        [Dependency]
-        public List<TimetableType> TimetableType { get; set; }
-        [Dependency]
-        public List<UserType> UserType { get; set; }
-        [Dependency]
-        public List<Vehicle> Vehicle { get; set; }
+		public IRepositoryDayType RepositoryDayTypes { get; set; }
 
-        public int Complete()
+		[Dependency]
+		public IRepositoryLine RepositoryLines { get; set; }
+
+		[Dependency]
+		public IRepositoryPricelist RepositoryPricelists { get; set; }
+
+		[Dependency]
+		public IRepositoryStation RepositoryStations { get; set; }
+
+		[Dependency]
+		public IRepositoryTicketPrice RepositoryTicketPrices { get; set; }
+
+		[Dependency]
+		public IRepositoryTicketType RepositoryTicketTypes { get; set; }
+
+		[Dependency]
+		public IRepositoryTimetable RepositoryTimetables { get; set; }
+
+		[Dependency]
+		public IRepositoryTimetableType RepositoryTimetableTypes { get; set; }
+
+		[Dependency]
+		public IRepositoryUserType RepositoryUserTypes { get; set; }
+
+		[Dependency]
+		public IRepositoryVehicle RepositoryVehicles { get; set; }
+
+		public int Complete()
         {
             return _context.SaveChanges();
         }
