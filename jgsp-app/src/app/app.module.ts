@@ -10,6 +10,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { UiModule } from './ui/ui.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes : Routes = [
   {path : "login", component: LoginComponent},
@@ -31,6 +32,7 @@ const routes : Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),  
+    ReactiveFormsModule,
     UiModule  
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService],

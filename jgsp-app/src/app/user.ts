@@ -6,4 +6,5 @@ export class User{
     Name: string;
     Surname: string;
     Address: string;
+    Date: string;
 }
