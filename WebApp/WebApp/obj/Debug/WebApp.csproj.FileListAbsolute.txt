@@ -444,5 +444,5 @@ D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\bin\Micro
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\bin\System.Web.Http.Owin.xml
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.JgspMigration.resources
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
+D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.JgspMigration.resources
