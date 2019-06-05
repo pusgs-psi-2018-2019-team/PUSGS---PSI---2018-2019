@@ -22,10 +22,11 @@
       </td>
       <td align="left">
          
-          <select class="selectbox" id="rv" onchange="lista_linija();" name="rv">
-              <option value="rvg" selected="">Gradski</option>
-              <option value="rvp">Prigradski</option>
-          </select> 
+        <select [(ngModel)]="selectedTimetableType" name="selectedTimetableType" >
+          <option *ngFor="let TimetableType of redVoznjeInfo.TimetableTypes" [ngValue]="TimetableType">
+            {{TimetableType.Name}}
+          </option>
+        </select>
          
       </td>
   </tr>
@@ -39,11 +40,11 @@
       </td>
       <td align="left">
           
-          <select class="selectbox" id="dan" onchange="lista_linija();" name="dan">
-              <option value="R" selected="">Radni dan</option>
-              <option value="S">Subota</option>
-              <option value="N">Nedelja</option>
-          </select> 
+        <select [(ngModel)]="selectedDayType" name="selectedDayType" >
+          <option *ngFor="let DayType of redVoznjeInfo.DayTypes" [ngValue]="DayType">
+            {{DayType.Name}}
+          </option>
+        </select>
           
       </td>
   </tr>
@@ -61,31 +62,10 @@
       </td>
       <td align="left" valign="top">    
         <div id="lista_linija">		
-          <select id="linija" class="listbox" size="5" name="linija[]" multiple="">
-            <option value="1*">1 KLISA-CENTAR-LIMAN I</option>
-            <option value="2.">2 CENTAR - NOVO NASELJE</option>
-            <option value="3.">3 PETROVARADIN-CENTAR-DETELINARA</option>
-            <option value="3A.">3A ZEL.STANICA - POBEDA</option>
-            <option value="4*">4 LIMAN IV - CENTAR - Z.STANICA</option>
-            <option value="5">5 TEMERINSKI PUT-CENTAR-AVIJATIČAR.NASELJE</option>
-            <option value="6">6 PODBARA-CENTAR-ADICE</option>
-            <option value="6A">6A ADICE - VETERNIK (O.S.MARIJA TRANDAFIL)</option>
-            <option value="7A.">7A N.NASELJE-Z.STAN-F.PIJA-LIMAN4-N.NASELJE</option>
-            <option value="7B.">7B N.NASELJE-LIMAN4-F.PIJA-Z.STAN-N.NASELJE</option>
-            <option value="8">8 NOVO NASELJE-CENTAR-LIMAN I</option>
-            <option value="9.">9 NOVO NASELJE - LIMAN - PETROVARADIN</option>
-            <option value="10">10 CENTAR-INDUST.ZONA JUG</option>
-            <option value="11A.">11A Z.STANICA-BOLNICA-LIMAN-Z.STANICA</option>
-            <option value="11B.">11B Z.STANICA-LIMAN-BOLNICA-Z.STANICA</option>
-            <option value="12.">12 CENTAR-TELEP</option>
-            <option value="13">13 DETELINARA - GRBAVICA - UNIVERZITET</option>
-            <option value="14">14 CENTAR - SAJLOVO</option>
-            <option value="15">15 CENTAR-INDUSTR.ZONA SEVER</option>
-            <option value="16.">16 ZELE.STANICA-PRISTANISNA ZONA</option>
-            <option value="17*">17 BIG TC - CENTAR</option>
-            <option value="18A">18A N.NASELJE-DETELINARA-CENTAR-LIMAN-N.NASELJE</option>
-            <option value="18B">18B N.NASELJE-LIMAN-CENTAR-DETELINARA-N.NASELJE</option>
-            <option value="20">20 ZEL.STANICA - LESNINA</option>
+          <select [(ngModel)]="selectedLine" name="selectedLine" (change)="changeselectedLine()">
+            <option *ngFor="let Line of redVoznjeInfo.Lines" [ngValue]="Line">
+              {{Line.SerialNumber}}
+            </option>
           </select>
         </div>                               
       </td>
@@ -96,13 +76,15 @@
       <td>
       
       <div align="right">
-        <button type="button" id="blue-button" onclick="ispis_polazaka()">Prikazi</button>
+        <button (click)="ispisPolaska()" [disabled]="selectedTimetableType.Id==undefined || selectedDayType.Id==undefined || selectedLine.Id==undefined">Prikazi</button>
       </div>
       </td>
-  </tr>
+    </tr>
   
-</tbody></table>
+    </tbody>
+  </table>
 
-
+  Polasci sa stanice:<br>
+  {{timetable.Times}}
 
 </form>

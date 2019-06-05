@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { UiModule } from './ui/ui.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RedvoznjeComponent } from './redvoznje/redvoznje.component';
+import { RedVoznjeHttpService } from 'src/services/redvoznje.service';
 
 const routes : Routes = [
   {path : "login", component: LoginComponent},
@@ -38,7 +39,7 @@ const routes : Routes = [
     ReactiveFormsModule,
     UiModule  
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService, RedVoznjeHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
+using WebApp.Models;
+using WebApp.Models.BindingModels;
 using WebApp.Persistence.UnitOfWork;
 
 namespace WebApp.Controllers
@@ -46,17 +48,29 @@ namespace WebApp.Controllers
 
 		public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }*/
 
-		// GET: api/RedVoznje
-		[ResponseType(typeof(string))]
-		public IHttpActionResult GetTimetableTimes(int id) //vraca vremena polaska autobusa iz reda voznji
+		// GET: api/RedVoznje/IspisReda/{timetableTypeId}/{dayTypeId}/{lineId}
+		//[ResponseType(typeof(string))]
+		[Route("IspisReda/{timetableTypeId}/{dayTypeId}/{lineId}")]
+		[HttpGet]
+		public IHttpActionResult GetTimetableTimes(int timetableTypeId,int dayTypeId,int lineId) //vraca vremena polaska autobusa iz reda voznji
 		{
-			string polasci = db.RepositoryTimetables.Get(id).Times;
-			if (polasci == null)
-			{
-				return NotFound();
-			}
+			Timetable t = new Timetable();
+			t = db.RepositoryTimetables.Find(x => x.TimetableTypeId == timetableTypeId && x.DayTypeId == dayTypeId && x.LineId == lineId).FirstOrDefault();
 
-			return Ok(polasci);
+			return Ok(t.Times);
+		}
+
+		// GET: api/RedVoznje/RedVoznjiInfo
+		[ResponseType(typeof(RedVoznjeInfoBindingModel))]
+		[Route("RedVoznjiInfo")]
+		public IHttpActionResult GetScheduleInfo()
+		{
+			List<TimetableType> timetableTypes = db.RepositoryTimetableTypes.GetAll().ToList();
+			List<Line> lines = db.RepositoryLines.GetAll().ToList();
+			List<DayType> dayTypes = db.RepositoryDayTypes.GetAll().ToList();
+			RedVoznjeInfoBindingModel s = new RedVoznjeInfoBindingModel() { TimetableTypes = timetableTypes, Lines = lines, DayTypes = dayTypes };
+
+			return Ok(s);
 		}
 
 		protected override void Dispose(bool disposing)
