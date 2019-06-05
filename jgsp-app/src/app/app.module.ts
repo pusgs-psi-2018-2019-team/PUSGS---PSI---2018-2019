@@ -13,13 +13,15 @@ import { UiModule } from './ui/ui.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RedvoznjeComponent } from './redvoznje/redvoznje.component';
 import { RedVoznjeHttpService } from 'src/services/redvoznje.service';
+import { HeaderAdminComponent } from './ui/header-admin/header-admin.component';
+import { HeaderLogedInComponent } from './ui/header-loged-in/header-loged-in.component';
 
 const routes : Routes = [
   {path : "login", component: LoginComponent},
   {path : "home", component: HomeComponent},
   {path : "register", component: RegisterComponent},
   {path : "redvoznje", component: RedvoznjeComponent},
-  {path : "", component: LoginComponent, pathMatch:"full"},
+  {path : "", component: HomeComponent, pathMatch:"full"},
   {path : "**", redirectTo: "login"},
 ]
 
@@ -29,7 +31,9 @@ const routes : Routes = [
     LoginComponent,
     HomeComponent,
     RegisterComponent,
-    RedvoznjeComponent
+    RedvoznjeComponent,
+    HeaderAdminComponent,
+    HeaderLogedInComponent
   ],
   imports: [
     BrowserModule,

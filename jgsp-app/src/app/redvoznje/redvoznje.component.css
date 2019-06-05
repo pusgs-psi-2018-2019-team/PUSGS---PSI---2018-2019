@@ -3,7 +3,7 @@
 }
 
 .cenovnik th{
-	background-color:#75C4EB;
+	background-color:fff;
 	color:#FFF;
 	padding:4px;
 	border:1px solid #fff;
@@ -25,6 +25,6 @@
 .cenovnik-form tr{
 	background-color:#C6EBFB;
 	background-color:#EDF0F2;
-	color:#2D85BC;
+	color:#343a40;
 	border:1px solid #fff;
 }

@@ -22,7 +22,7 @@
       </td>
       <td align="left">
          
-        <select [(ngModel)]="selectedTimetableType" name="selectedTimetableType" >
+        <select [(ngModel)]="selectedTimetableType" name="selectedTimetableType">
           <option *ngFor="let TimetableType of redVoznjeInfo.TimetableTypes" [ngValue]="TimetableType">
             {{TimetableType.Name}}
           </option>

@@ -184,22 +184,6 @@
                 context.SaveChanges();
             }
 
-            // Timetable
-
-            if (!context.Timetable.Any(t => t.Id == 1))
-            {
-                Timetable timetable = new Timetable() { Id = 1, TimetableTypeId = 1,DayTypeId = 1 };
-                context.Timetable.Add(timetable);
-                context.SaveChanges();
-            }
-
-            if (!context.Timetable.Any(t => t.Id == 2))
-            {
-                Timetable timetable = new Timetable() { Id = 2, TimetableTypeId = 2, DayTypeId = 2 };
-                context.Timetable.Add(timetable);
-                context.SaveChanges();
-            }
-
             //  line
             if (!context.Line.Any(t => t.Id == 1))
             {
@@ -214,6 +198,24 @@
                 context.Line.Add(line);
                 context.SaveChanges();
             }
+
+            // Timetable
+
+            if (!context.Timetable.Any(t => t.Id == 1))
+            {
+                Timetable timetable = new Timetable() { Id = 1,LineId=1, TimetableTypeId = 1,DayTypeId = 1,Times="9:50 10:50 11:50" };
+                context.Timetable.Add(timetable);
+                context.SaveChanges();
+            }
+
+            if (!context.Timetable.Any(t => t.Id == 2))
+            {
+                Timetable timetable = new Timetable() { Id = 2, LineId = 1, TimetableTypeId = 2, DayTypeId = 2 , Times = "9:50 10:50 11:50 12:50 13:50" };
+                context.Timetable.Add(timetable);
+                context.SaveChanges();
+            }
+
+           
 
             //  ticketPrice
             if (!context.TicketPrice.Any(t => t.Id == 1))
