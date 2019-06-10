@@ -13,6 +13,12 @@ import { UiModule } from './ui/ui.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RedvoznjeComponent } from './redvoznje/redvoznje.component';
 import { RedVoznjeHttpService } from 'src/services/redvoznje.service';
+import { HeaderAdminComponent } from './ui/header-admin/header-admin.component';
+import { HeaderLogedInComponent } from './ui/header-loged-in/header-loged-in.component';
+import { CenovnikComponent } from './cenovnik/cenovnik.component';
+import { CenovnikHttpService } from '../services/cenovnik.service';
+import { ProfilComponent } from './profil/profil.component';
+import { ProfilHttpService } from '../services/profil.service';
 import { CardVerificationComponent } from './card-verification/card-verification.component';
 import { CardVerificationHttpService } from 'src/services/cardVerification.service';
 
@@ -21,6 +27,8 @@ const routes : Routes = [
   {path : "home", component: HomeComponent},
   {path : "register", component: RegisterComponent},
   {path : "redvoznje", component: RedvoznjeComponent},
+  {path : "cenovnik", component: CenovnikComponent},
+  {path : "profil", component: ProfilComponent},
   {path: "cardVerification", component: CardVerificationComponent},
   {path : "", component: HomeComponent, pathMatch:"full"},
   {path : "**", redirectTo: "login"},
@@ -34,6 +42,10 @@ const routes : Routes = [
     RegisterComponent,
     RedvoznjeComponent,
     CardVerificationComponent
+    HeaderAdminComponent,
+    HeaderLogedInComponent,
+    CenovnikComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +55,7 @@ const routes : Routes = [
     ReactiveFormsModule,
     UiModule  
   ],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService, RedVoznjeHttpService,CenovnikHttpService,ProfilHttpService],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService, RedVoznjeHttpService, CardVerificationHttpService],
   bootstrap: [AppComponent]
 })

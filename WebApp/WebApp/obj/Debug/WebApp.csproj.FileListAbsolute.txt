@@ -140,7 +140,6 @@ C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\bi
 C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\bin\System.Web.Http.Owin.xml
 C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
 C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.InitialMigration.resources
 C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.JgspMigration.resources
 C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.csproj.GenerateResource.cache
@@ -148,7 +147,6 @@ C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\ob
 C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.csproj.CopyComplete
 C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.dll
 C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.pdb
-C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.JgspMigration1.resources
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\bin\WebApp.dll.config
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\bin\WebApp.dll
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\bin\WebApp.pdb
@@ -299,3 +297,4 @@ D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.dll
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.pdb
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.JgspMigration.resources
+C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache

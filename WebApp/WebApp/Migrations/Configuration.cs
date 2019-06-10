@@ -13,7 +13,8 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-        }
+			AutomaticMigrationDataLossAllowed = true;
+		}
 
         protected override void Seed(WebApp.Persistence.ApplicationDbContext context)
         {
@@ -222,22 +223,14 @@
                 context.SaveChanges();
             }
 
-           
 
             //  ticketPrice
             if (!context.TicketPrice.Any(t => t.Id == 1))
             {
-                TicketPrice ticketPrice = new TicketPrice() { Id = 1, Price = 50, PricelistId = 1, TicketTypeId = 1};
+                TicketPrice ticketPrice = new TicketPrice() {  Price = 50, PricelistId = 1, TicketTypeId = 1};
                 context.TicketPrice.Add(ticketPrice);
                 context.SaveChanges();
             }
-
-            if (!context.TicketPrice.Any(t => t.Id == 2))
-            {
-                TicketPrice ticketPrice = new TicketPrice() { Id = 2, Price = 50, PricelistId = 1, TicketTypeId = 1 };
-                context.TicketPrice.Add(ticketPrice);
-                context.SaveChanges();
-            }
-        }
+		}
     }
 }

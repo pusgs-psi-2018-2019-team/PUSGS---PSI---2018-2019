@@ -12,7 +12,16 @@
       <p>Email:<span class="fa fa-user"></span><input Placeholder="Email" type="email" formControlName="Email" required></p><br>
       <p>Address:<span class="fa fa-user"></span><input Placeholder="Address" type="email" formControlName="Address" required></p><br>
       <p>Date:<span class="fa fa-user"></span><input Placeholder="Date" type="date" formControlName="Date" required></p><br>
-     
+      <p>PhoneNumber:<span class="fa fa-user"></span><input Placeholder="PhoneNumber" type="text" formControlName="PhoneNumber" required></p><br>      
+      <div class="form-group col-md-6">
+        <label for="image" class="col-sm-2">Dokument</label>
+        <!-- <input type="file" class="form-control-file" formControlName="ImageUpload" id="FormControlFile1"> -->
+        <input #file type="file" accept='image/*' formControlName="ImageUrl" (change)="preview(file.files)" />
+        <img [src]="imgURL" height="200" *ngIf="imgURL">
+        <br>
+        <!-- {{imgURL}}
+        {{imageUrl}} -->
+    </div>
 
   </fieldset>
 <div class="clearfix"></div>

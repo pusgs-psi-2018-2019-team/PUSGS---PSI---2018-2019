@@ -7,6 +7,7 @@ namespace WebApp.Migrations
     {
         public override void Up()
         {
+
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new

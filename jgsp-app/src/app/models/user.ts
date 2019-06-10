@@ -7,4 +7,8 @@ export class User{
     Surname: string;
     Address: string;
     Date: string;
+    PhoneNumber: string;
+    TypeId: string;
+    ImageUrl: string;
+    Verificate: number;
 }
