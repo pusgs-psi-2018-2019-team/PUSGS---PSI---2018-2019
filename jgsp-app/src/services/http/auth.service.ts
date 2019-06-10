@@ -23,17 +23,18 @@ export class AuthHttpService{
             this.http.post<any>(this.base_url + "/oauth/token",data,httpOptions).subscribe(data => {
 
                 localStorage.jwt = data.access_token;
-
                 let jwtData = localStorage.jwt.split('.')[1]
                 let decodedJwtJsonData = window.atob(jwtData)
-                let decodedJwtData = JSON.parse(localStorage.decodedJwtJsonData)
-        
+                let decodedJwtData = JSON.parse(decodedJwtJsonData)
+
+    
                 let role = decodedJwtData.role
         
                 console.log('jwtData: ' + jwtData)
                 console.log('decodedJwtJsonData: ' + decodedJwtJsonData)
                 console.log('decodedJwtData: ' + decodedJwtData)
                 console.log('Role ' + role)
+                localStorage.setItem("role", role);
 
                 observer.next("uspesno");
                 localStorage.setItem("loggedUser",username);
@@ -52,6 +53,7 @@ export class AuthHttpService{
         return Observable.create((observer) => {
             localStorage.setItem("loggedUser",undefined);
             localStorage.jwt = undefined;
+            localStorage.role = undefined;
         });
     }
 

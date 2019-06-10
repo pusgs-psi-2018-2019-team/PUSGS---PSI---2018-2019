@@ -22,11 +22,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  logout(){
-    localStorage.jwt = undefined;
-    localStorage.loggedUser = undefined;
-  }
-
   login(){
     let user: User = this.loginForm.value;
     this.http.logIn(user.Username,user.Password).subscribe(temp => {

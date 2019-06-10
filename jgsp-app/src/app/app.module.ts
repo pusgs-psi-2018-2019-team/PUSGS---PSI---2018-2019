@@ -13,14 +13,15 @@ import { UiModule } from './ui/ui.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RedvoznjeComponent } from './redvoznje/redvoznje.component';
 import { RedVoznjeHttpService } from 'src/services/redvoznje.service';
-import { HeaderAdminComponent } from './ui/header-admin/header-admin.component';
-import { HeaderLogedInComponent } from './ui/header-loged-in/header-loged-in.component';
+import { CardVerificationComponent } from './card-verification/card-verification.component';
+import { CardVerificationHttpService } from 'src/services/cardVerification.service';
 
 const routes : Routes = [
   {path : "login", component: LoginComponent},
   {path : "home", component: HomeComponent},
   {path : "register", component: RegisterComponent},
   {path : "redvoznje", component: RedvoznjeComponent},
+  {path: "cardVerification", component: CardVerificationComponent},
   {path : "", component: HomeComponent, pathMatch:"full"},
   {path : "**", redirectTo: "login"},
 ]
@@ -32,8 +33,7 @@ const routes : Routes = [
     HomeComponent,
     RegisterComponent,
     RedvoznjeComponent,
-    HeaderAdminComponent,
-    HeaderLogedInComponent
+    CardVerificationComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +43,7 @@ const routes : Routes = [
     ReactiveFormsModule,
     UiModule  
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService, RedVoznjeHttpService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService, RedVoznjeHttpService, CardVerificationHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

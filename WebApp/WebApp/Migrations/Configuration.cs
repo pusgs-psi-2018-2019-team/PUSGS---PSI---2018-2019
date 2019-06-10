@@ -147,9 +147,16 @@
                 userManager.AddToRole(user.Id, "Admin");
             }
 
-            if (!context.Users.Any(u => u.UserName == "appu@yahoo.com"))
+            if (!context.Users.Any(u => u.UserName == "controller@yahoo.com"))
             { 
-                var user = new ApplicationUser() { Id = "appu", UserName = "appu@yahoo.com", Email = "appu@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu123!"), TypeId=2 };
+                var user = new ApplicationUser() { Id = "controller", UserName = "controller@yahoo.com", Email = "controller@yahoo.comm", PasswordHash = ApplicationUser.HashPassword("Controller123!"), TypeId=2 };
+                userManager.Create(user);
+                userManager.AddToRole(user.Id, "Controller");
+            }
+
+            if (!context.Users.Any(u => u.UserName == "appu@yahoo.com"))
+            {
+                var user = new ApplicationUser() { Id = "appu", UserName = "appu@yahoo.com", Email = "appu@yahoo.com", PasswordHash = ApplicationUser.HashPassword("Appu123!"), TypeId = 2 };
                 userManager.Create(user);
                 userManager.AddToRole(user.Id, "AppUser");
             }

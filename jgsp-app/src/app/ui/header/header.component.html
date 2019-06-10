@@ -2,11 +2,18 @@
     <a class="navbar-brand" href="/">JAVNO GRADSKO SAOBRAĆAJNO PREDUZEĆE - NOVI SAD</a>
     <div class="navbar-expand mr-auto">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" href="http://localhost:4200/redvoznje">REDOVI VOŽNJE</a>
-        <a class="nav-item nav-link" href="#">MREŽE LINIJA</a>
-        <a class="nav-item nav-link" href="#">TRENUTNE LOKACIJE VOZILA</a>
-        <a class="nav-item nav-link" href="#">CENOVNIK</a>
-        <a class="nav-item nav-link" href="http://localhost:4200/login">PRIJAVI SE/REGISTRUJ SE</a>
+        <a *ngIf="!jwtIsAdmin() && !jwtIsController()" class="nav-item nav-link" href="http://localhost:4200/redvoznje">REDOVI VOŽNJE</a>
+        <a *ngIf="!jwtIsAdmin() && !jwtIsController()" class="nav-item nav-link" href="/">MREŽE LINIJA</a>
+        <a *ngIf="!jwtIsAdmin() && !jwtIsController()" class="nav-item nav-link" href="/">TRENUTNE LOKACIJE VOZILA</a>
+        <a *ngIf="!jwtIsAdmin() && !jwtIsController()"class="nav-item nav-link" href="/">CENOVNIK</a>
+        <a *ngIf="!jwtIsUndefined()" class="nav-item nav-link" href="http://localhost:4200/login">PRIJAVI SE/REGISTRUJ SE</a>
+        <a *ngIf="jwtIsAdmin()" class="nav-item nav-link" href="/">UREDI LINIJE</a>
+        <a *ngIf="jwtIsAdmin()" class="nav-item nav-link" href="/">UREDI STANICE</a>
+        <a *ngIf="jwtIsAdmin()" class="nav-item nav-link" href="http://localhost:4200/redvoznje">UREDI REDOVE VOŽNJE</a>
+        <a *ngIf="jwtIsController()" class="nav-item nav-link" href="/">VERIFIKOVANJE KORISNIKA</a>
+        <a *ngIf="jwtIsController()" class="nav-item nav-link" href="http://localhost:4200/cardVerification">VALIDACIJA KARTE</a>
+        <a *ngIf="jwtIsUndefined()" class="nav-item nav-link" href="http://localhost:4200/profil">MOJ PROFIL</a>
+        <a *ngIf="jwtIsUndefined()" (click)="logout()" href="http://localhost:4200/login">ODJAVI SE</a>
       </div>
     </div>
 </nav>
