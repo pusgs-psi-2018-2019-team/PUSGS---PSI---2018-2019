@@ -22,7 +22,7 @@ export class AuthHttpService{
             }
             this.http.post<any>(this.base_url + "/oauth/token",data,httpOptions).subscribe(data => {
 
-                localStorage.jwt = data.access_token;
+                /*localStorage.jwt = data.access_token;
 
                 let jwtData = localStorage.jwt.split('.')[1]
                 let decodedJwtJsonData = window.atob(jwtData)
@@ -35,6 +35,11 @@ export class AuthHttpService{
                 console.log('decodedJwtData: ' + decodedJwtData)
                 console.log('Role ' + role)
 
+                observer.next("uspesno");
+                localStorage.setItem("loggedUser",username);
+                observer.complete();*/
+
+                localStorage.jwt = data.access_token;
                 observer.next("uspesno");
                 localStorage.setItem("loggedUser",username);
                 observer.complete();

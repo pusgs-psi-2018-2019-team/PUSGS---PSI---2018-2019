@@ -68,6 +68,14 @@ namespace WebApp.Models
 		[Required]
 		[Display(Name = "Address")]
 		public string Address { get; set; }
+
+		[Required]
+		[Display(Name = "PhoneNumber")]
+		public string PhoneNumber { get; set; }
+
+		[Required]
+		[Display(Name = "ImageUrl")]
+		public string ImageUrl { get; set; }
 	}
 
     public class RegisterExternalBindingModel

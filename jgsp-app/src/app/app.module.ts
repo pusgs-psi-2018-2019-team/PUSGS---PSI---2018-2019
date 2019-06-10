@@ -15,12 +15,18 @@ import { RedvoznjeComponent } from './redvoznje/redvoznje.component';
 import { RedVoznjeHttpService } from 'src/services/redvoznje.service';
 import { HeaderAdminComponent } from './ui/header-admin/header-admin.component';
 import { HeaderLogedInComponent } from './ui/header-loged-in/header-loged-in.component';
+import { CenovnikComponent } from './cenovnik/cenovnik.component';
+import { CenovnikHttpService } from '../services/cenovnik.service';
+import { ProfilComponent } from './profil/profil.component';
+import { ProfilHttpService } from '../services/profil.service';
 
 const routes : Routes = [
   {path : "login", component: LoginComponent},
   {path : "home", component: HomeComponent},
   {path : "register", component: RegisterComponent},
   {path : "redvoznje", component: RedvoznjeComponent},
+  {path : "cenovnik", component: CenovnikComponent},
+  {path : "profil", component: ProfilComponent},
   {path : "", component: HomeComponent, pathMatch:"full"},
   {path : "**", redirectTo: "login"},
 ]
@@ -33,7 +39,9 @@ const routes : Routes = [
     RegisterComponent,
     RedvoznjeComponent,
     HeaderAdminComponent,
-    HeaderLogedInComponent
+    HeaderLogedInComponent,
+    CenovnikComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +51,7 @@ const routes : Routes = [
     ReactiveFormsModule,
     UiModule  
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService, RedVoznjeHttpService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService, RedVoznjeHttpService,CenovnikHttpService,ProfilHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
