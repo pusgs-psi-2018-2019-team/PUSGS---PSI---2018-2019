@@ -254,8 +254,11 @@
     <Compile Include="Controllers\CardVerificationController.cs" />
     <Compile Include="Controllers\CenovnikController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LineEditController.cs" />
     <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\RedVoznjeController.cs" />
+    <Compile Include="Controllers\StationEditController.cs" />
+    <Compile Include="Controllers\TimetableEditController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

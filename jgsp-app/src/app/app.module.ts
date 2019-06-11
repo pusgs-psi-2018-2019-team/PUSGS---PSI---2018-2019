@@ -19,6 +19,12 @@ import { ProfilComponent } from './profil/profil.component';
 import { ProfilHttpService } from '../services/profil.service';
 import { CardVerificationComponent } from './card-verification/card-verification.component';
 import { CardVerificationHttpService } from 'src/services/cardVerification.service';
+import { LineEditComponent } from './line-edit/line-edit.component';
+import { StationEditComponent } from './station-edit/station-edit.component';
+import { TimetableEditComponent } from './timetable-edit/timetable-edit.component';
+import { LineEditHttpService } from 'src/services/lineEdit.service';
+import { TimetableEditHttpService } from 'src/services/timetableEdit.service';
+import { StationEditHttpService } from 'src/services/stationEdit.service';
 
 const routes : Routes = [
   {path : "login", component: LoginComponent},
@@ -27,6 +33,9 @@ const routes : Routes = [
   {path : "redvoznje", component: RedvoznjeComponent},
   {path : "cenovnik", component: CenovnikComponent},
   {path : "profil", component: ProfilComponent},
+  {path: "timetableEdit", component: TimetableEditComponent},
+  {path: "stationEdit", component: StationEditComponent},
+  {path: "lineEdit", component: LineEditComponent},
   {path: "cardVerification", component: CardVerificationComponent},
   {path : "", component: HomeComponent, pathMatch:"full"},
   {path : "**", redirectTo: "login"},
@@ -41,7 +50,10 @@ const routes : Routes = [
     RedvoznjeComponent,
     CardVerificationComponent,
     CenovnikComponent,
-    ProfilComponent
+    ProfilComponent,
+    LineEditComponent,
+    StationEditComponent,
+    TimetableEditComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +63,7 @@ const routes : Routes = [
     ReactiveFormsModule,
     UiModule  
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService,CardVerificationHttpService, RedVoznjeHttpService,CenovnikHttpService,ProfilHttpService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService,CardVerificationHttpService, RedVoznjeHttpService,CenovnikHttpService,ProfilHttpService, LineEditHttpService, TimetableEditHttpService, StationEditHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
