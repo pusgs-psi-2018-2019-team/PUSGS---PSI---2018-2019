@@ -9,5 +9,6 @@ namespace WebApp.Models.BindingModels
 	{
 		public string Username { get; set; }
 		public double Price { get; set; }
+		public string TipKarte { get; set; }
 	}
 }

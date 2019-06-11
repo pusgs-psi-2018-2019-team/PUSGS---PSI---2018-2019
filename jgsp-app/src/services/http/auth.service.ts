@@ -21,13 +21,12 @@ export class AuthHttpService{
                 }
             }
             this.http.post<any>(this.base_url + "/oauth/token",data,httpOptions).subscribe(data => {
-
+                console.log("uso u post");
                 localStorage.jwt = data.access_token;
                 let jwtData = localStorage.jwt.split('.')[1]
                 let decodedJwtJsonData = window.atob(jwtData)
                 let decodedJwtData = JSON.parse(decodedJwtJsonData)
 
-    
                 let role = decodedJwtData.role
         
                 console.log('jwtData: ' + jwtData)
@@ -35,10 +34,13 @@ export class AuthHttpService{
                 console.log('decodedJwtData: ' + decodedJwtData)
                 console.log('Role ' + role)
                 localStorage.setItem("role", role);
-
+                localStorage.setItem("loggedUser",username);
+                observer.next("uspesno");
+                observer.complete();
+               /* localStorage.jwt = data.access_token;
                 observer.next("uspesno");
                 localStorage.setItem("loggedUser",username);
-                observer.complete();
+                observer.complete();*/
             },
             err => {
                 console.log(err);

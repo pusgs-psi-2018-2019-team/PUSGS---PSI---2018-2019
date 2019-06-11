@@ -13,8 +13,6 @@ import { UiModule } from './ui/ui.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RedvoznjeComponent } from './redvoznje/redvoznje.component';
 import { RedVoznjeHttpService } from 'src/services/redvoznje.service';
-import { HeaderAdminComponent } from './ui/header-admin/header-admin.component';
-import { HeaderLogedInComponent } from './ui/header-loged-in/header-loged-in.component';
 import { CenovnikComponent } from './cenovnik/cenovnik.component';
 import { CenovnikHttpService } from '../services/cenovnik.service';
 import { ProfilComponent } from './profil/profil.component';
@@ -41,9 +39,7 @@ const routes : Routes = [
     HomeComponent,
     RegisterComponent,
     RedvoznjeComponent,
-    CardVerificationComponent
-    HeaderAdminComponent,
-    HeaderLogedInComponent,
+    CardVerificationComponent,
     CenovnikComponent,
     ProfilComponent
   ],
@@ -55,8 +51,7 @@ const routes : Routes = [
     ReactiveFormsModule,
     UiModule  
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService, RedVoznjeHttpService,CenovnikHttpService,ProfilHttpService],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService, RedVoznjeHttpService, CardVerificationHttpService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService,CardVerificationHttpService, RedVoznjeHttpService,CenovnikHttpService,ProfilHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
