@@ -34,9 +34,29 @@ namespace WebApp.Controllers
             Ticket ticket = db.RepositoryTicket.Find(x => x.Id.Equals(id)).FirstOrDefault();
 
             if (ticket != null)
-                return Ok("true");
+			{
+				Pricelist pricelist = db.RepositoryPricelists.Find(x=> x.Id.Equals(ticket.PricelistId)).FirstOrDefault();
+				if(pricelist != null)
+				{
+					DateTime vaziOd = DateTime.Parse(pricelist.From);
+					DateTime vaziDo = DateTime.Parse(pricelist.To);
+					DateTime sada = DateTime.Now;
+					if (vaziOd < sada && sada < vaziDo)
+					{
+						return Ok("true");
+					}
+					else
+					{
+						return StatusCode(HttpStatusCode.BadRequest);
+					}
+				}
+				else
+				{
+					return StatusCode(HttpStatusCode.BadRequest);
+				}
+			}                
             else
-                return Ok("false");
-        }
+				return StatusCode(HttpStatusCode.BadRequest);
+		}
     }
 }

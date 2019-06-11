@@ -64,6 +64,14 @@ export class ProfilComponent implements OnInit {
     });
   }
 
+  jwtIsController() : boolean{
+    return localStorage.getItem('role') == "Controller"
+  }
+
+  jwtIsAdmin() : boolean{
+    return localStorage.getItem('role') == "Admin"
+  }
+
   UpdateUser() {
     this.http.updateUser(this.updateForm.value).subscribe((userProfileInfo) =>  {
       if (userProfileInfo == "uspesno") {

@@ -296,5 +296,4 @@ D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.dll
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.pdb
 D:\FAX\IV godina\Blok 8\Projekat\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.JgspMigration.resources
-C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.csprojAssemblyReference.cache
 C:\Users\BogdanKovacev\Documents\GitHub\PUSGS---PSI---2018-2019\WebApp\WebApp\obj\Debug\WebApp.Migrations.JgspMigration.resources

@@ -95,23 +95,68 @@ namespace WebApp.Controllers
 			{
 				return BadRequest();
 			}
+
 			var userStore = new UserStore<ApplicationUser>(db);
 			var userManager = new UserManager<ApplicationUser>(userStore);
 			Ticket ticket = new Ticket();
 			ApplicationUser user = new ApplicationUser();
 			ticket.FinalPrice = karta.Price;
 			string idUsera = User.Identity.GetUserId();
-			if(idUsera != null)
+			DateTime vaziOd = new DateTime();
+			DateTime vaziDo = new DateTime();
+
+			if (idUsera != null)
 			{
 				var id = User.Identity.GetUserId();
 				user = userManager.FindById(id);
 				ticket.UserId = user.Id;
 			}
+			
+			if (karta.TipKarte.Equals("Vremenska karta"))
+			{
+				vaziOd = DateTime.Now;
+				vaziDo = DateTime.Now.AddHours(1);
+			}
+			else if (karta.TipKarte.Equals("Dnevna karta"))
+			{
+				vaziOd = DateTime.Now;
+				vaziDo = KrajDana(DateTime.Now);
+			}
+			else if (karta.TipKarte.Equals("Mesečna karta"))
+			{
+				vaziOd = DateTime.Now;
+				DateTime temp = DateTime.Now;
+				temp = vaziOd.AddMonths(1);
+				vaziDo = new DateTime(temp.Year, temp.Month, 1, 0, 0, 0);
+			}
+			else if (karta.TipKarte.Equals("Godišnja karta"))
+			{
+				vaziOd = DateTime.Now;
+				DateTime temp = DateTime.Now;
+				temp = vaziOd.AddYears(1);
+				vaziDo = new DateTime(temp.Year, 1, 1, 0, 0, 0);
+			}
 
-			db.Entry(ticket).State = EntityState.Added;
+			Pricelist pl = new Pricelist();
+			pl.From = vaziOd.ToString();
+			pl.To = vaziDo.ToString();
 
 			try
 			{
+				db.Entry(pl).State = EntityState.Added;
+				db.SaveChanges();
+			}
+			catch (DbUpdateConcurrencyException e)
+			{
+				return StatusCode(HttpStatusCode.BadRequest);
+			}
+
+			Pricelist pricelist = db.Pricelist.Where(x => x.From.Equals(pl.From) && x.To.Equals(pl.To)).FirstOrDefault();
+			ticket.PricelistId = pricelist.Id;
+
+			try
+			{
+				db.Entry(ticket).State = EntityState.Added;
 				db.SaveChanges();
 			}
 			catch (DbUpdateConcurrencyException e)
@@ -169,5 +214,16 @@ namespace WebApp.Controllers
 		{
 			return Db.RepositoryTimetables.GetAll().Count(e => e.Id == id) > 0;
 		}
+
+		public static DateTime PocetakDana(DateTime dateTime)
+		{
+			return dateTime.Date;
+		}
+		
+		public static DateTime KrajDana(DateTime dateTime)
+		{
+			return PocetakDana(dateTime).AddDays(1).AddTicks(-1);
+		}
+
 	}
 }
