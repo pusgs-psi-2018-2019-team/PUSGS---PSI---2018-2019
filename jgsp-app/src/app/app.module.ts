@@ -27,6 +27,9 @@ import { TimetableEditHttpService } from 'src/services/timetableEdit.service';
 import { StationEditHttpService } from 'src/services/stationEdit.service';
 import { VerificateUserComponent } from './verificate-user/verificate-user.component';
 import { VerificateUserHttpService } from '../services/verificateUser.service';
+import { from } from 'rxjs';
+import { AuthGuardAdmin } from 'src/services/http/auth.guard';
+import { AuthGuardController } from 'src/services/http/auth2.guard';
 
 const routes : Routes = [
   {path : "login", component: LoginComponent},
@@ -35,13 +38,13 @@ const routes : Routes = [
   {path : "redvoznje", component: RedvoznjeComponent},
   {path : "cenovnik", component: CenovnikComponent},
   {path : "profil", component: ProfilComponent},
-  {path: "timetableEdit", component: TimetableEditComponent},
-  {path: "stationEdit", component: StationEditComponent},
-  {path: "lineEdit", component: LineEditComponent},
-  {path: "cardVerification", component: CardVerificationComponent},
-  {path: "verificateUser", component: VerificateUserComponent},
+  {path: "timetableEdit", component: TimetableEditComponent, canActivate: [AuthGuardAdmin]},
+  {path: "stationEdit", component: StationEditComponent, canActivate: [AuthGuardAdmin]},
+  {path: "lineEdit", component: LineEditComponent, canActivate: [AuthGuardAdmin]},
+  {path: "cardVerification", component: CardVerificationComponent, canActivate: [AuthGuardController]},
+  {path: "verificateUser", component: VerificateUserComponent, canActivate: [AuthGuardController]},
   {path : "", component: HomeComponent, pathMatch:"full"},
-  {path : "**", redirectTo: "login"},
+  {path : "**", redirectTo: ""},
 ]
 
 @NgModule({
