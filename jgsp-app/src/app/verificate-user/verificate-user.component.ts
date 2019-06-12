@@ -29,6 +29,7 @@ export class VerificateUserComponent implements OnInit {
   selectedUser: string
   approved: string
   selectedId: string
+  imageToValidate = null;
   ngOnInit() {
     
     this.odluka = "";
@@ -39,11 +40,31 @@ export class VerificateUserComponent implements OnInit {
   }
 
   Prihvati(){
-    
+    this.http.odluka(this.selectedUser,"prihvati").subscribe((data) => {
+      if(data.UserName == this.selectedUser)
+      {
+        alert("Uspesno ste odobrili profil");
+      }
+      else
+      {
+        alert("Doslo je do greske");
+      }
+      err => console.log(err);
+    });
   }
 
   Odbij(){
-    
+    this.http.odluka(this.selectedUser,"odbij").subscribe((data) => {
+      if(data.UserName == this.selectedUser)
+      {
+        alert("Uspesno ste odbili profil");
+      }
+      else
+      {
+        alert("Doslo je do greske");
+      }
+      err => console.log(err);
+    });
   }
 
   PrikaziInfo(){
@@ -83,10 +104,19 @@ export class VerificateUserComponent implements OnInit {
       this.infoForm.patchValue({ Name : data.Name, Surname: data.Surname, 
         Email: data.Email, Address : data.Address, PhoneNumber : data.PhoneNumber, 
         Date : data.Date, Verificate : this.approved, 
-        UserType : data.UserType , ImageUrl: "C:/Users/BogdanKovacev/Documents/Untitled.png"})
+        UserType : data.UserType , ImageUrl: "~/~/~/WebApp/WebApp/UploadFile" + data.ImageUrl})
 
       err => console.log(err);
     });
+    
+    this.http.downloadImage(this.selectedId).subscribe(
+      data => {
+        this.imageToValidate = 'data:image/jpeg;base64,' + data;
+      }, error => {
+        console.log(error);
+        this.imageToValidate = null;
+      }
+    )    
   }
 
 }

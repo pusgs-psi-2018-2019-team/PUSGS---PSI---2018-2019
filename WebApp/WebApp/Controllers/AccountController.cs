@@ -14,6 +14,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using WebApp.Models;
+using WebApp.Persistence;
 using WebApp.Persistence.UnitOfWork;
 using WebApp.Providers;
 using WebApp.Results;
@@ -26,14 +27,15 @@ namespace WebApp.Controllers
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
-		
-		private IUnitOfWork unitOfWork;
+		private ApplicationDbContext db = new ApplicationDbContext();
+		public IUnitOfWork Db { get; set; }
 
-		public AccountController()
-        {
-        }
+		public AccountController(IUnitOfWork db)
+		{
+			this.Db = db;
+		}
 
-        public AccountController(ApplicationUserManager userManager,
+		public AccountController(ApplicationUserManager userManager,
             ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
         {
             UserManager = userManager;
@@ -331,7 +333,7 @@ namespace WebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email, TypeId = 1, Name = model.Name, Password = model.Password, Date = model.Date, ConfirmPassword = model.ConfirmPassword,Surname = model.Surname, VerificateAcc = 0, Address = model.Address,ImageUrl = model.ImageUrl, PhoneNumber = model.PhoneNumber};
+            var user = new ApplicationUser() { UserName = model.Username, Email = model.Email, TypeId = 1, Name = model.Name, Password = model.Password, Date = model.Date, ConfirmPassword = model.ConfirmPassword,Surname = model.Surname, VerificateAcc = 0, Address = model.Address, PhoneNumber = model.PhoneNumber};
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -341,7 +343,7 @@ namespace WebApp.Controllers
             }
 
             return Ok();
-        }
+        }		
 
 		// POST api/Account/RegisterExternal
 		[OverrideAuthentication]

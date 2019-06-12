@@ -62,7 +62,8 @@
       </div>
       <div class="form-group row">
           <label for="ImageUrl" class="col-sm-2 col-form-label">Dokument</label>
-          <img [src]="ImageUrl" height="200" *ngIf="ImageUrl">
+          <img [src]="imageToValidate" style="max-width: 200px; max-height: 200px;" class="btn-md img-fluid img-thumbnail"/>
+          <br/>
       </div>
     </form>
   </div>

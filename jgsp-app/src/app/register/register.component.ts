@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   registacijaForm = this.fb.group({
     Name: ['', Validators.required],
     Surname: ['', Validators.required],
-    Username: ['', Validators.required],
+    UserName: ['', Validators.required],
     Password: ['', Validators.required],
     ConfirmPassword: ['', Validators.required],
     Email: ['', Validators.required],
@@ -24,6 +24,11 @@ export class RegisterComponent implements OnInit {
     Date: ['', Validators.required]
   });
   
+  selectedFile: File = null;
+  onFileSelected(event) {
+    this.selectedFile = <File>event.target.files[0];
+  }
+
   constructor(private http:AuthHttpService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -31,11 +36,26 @@ export class RegisterComponent implements OnInit {
 
   register(){
     let regModel: User = this.registacijaForm.value;
+    let formData: FormData = new FormData();
+
+    if (this.selectedFile != null) {
+      formData.append('ImageUrl', this.selectedFile, this.selectedFile.name);
+    }
+
     this.http.register(regModel).subscribe(temp => {
       if(temp == "uspesno")
       {
-        console.log(temp);
-        this.router.navigate(["/home"])
+        if (this.selectedFile != null) {
+          this.http.uploadImage(formData, regModel.UserName).subscribe(ret => {
+            alert("Unseccesfull!!!");
+            this.router.navigate(["/home"]);
+          },
+            err => console.log(err));
+        }
+        else {
+          alert("Succesfully registered!");
+          this.router.navigate(["/login"]);
+        }
       }
       else if(temp == "neuspesno")
       {

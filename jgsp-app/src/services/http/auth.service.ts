@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../../app/models/user';
 
@@ -79,5 +79,22 @@ export class AuthHttpService{
             });
         });
      
+    }
+
+    uploadImage(data: any, id: string) : Observable<any> {
+        return Observable.create((observer) => {
+            let httpOptions = {
+                headers: new HttpHeaders().delete('Content-Type')
+            }
+            this.http.post<any>(this.base_url + "/api/Profil/UplaodPicture/" + id,data,httpOptions).subscribe(data => {
+                observer.next("uspesno");
+                observer.complete();
+            },
+            err => {
+                console.log(err);
+                observer.next("neuspesno");
+                observer.complete();
+            });
+        });
     }
 }

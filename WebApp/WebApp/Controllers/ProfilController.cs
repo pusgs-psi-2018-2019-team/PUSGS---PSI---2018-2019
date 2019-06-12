@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -54,6 +55,80 @@ namespace WebApp.Controllers
 			}
 
 			return Ok(ret);
+		}
+
+		[HttpPost]
+		[Route("api/Profil/UplaodPicture/{username}")]
+		[AllowAnonymous]
+		public IHttpActionResult UploadImage(string username)
+		{
+			var httpRequest = HttpContext.Current.Request;
+			
+			try
+			{
+				if (httpRequest.Files.Count > 0)
+				{
+					foreach (string file in httpRequest.Files)
+					{
+
+						ApplicationUser ret = new ApplicationUser();
+
+						var userStore = new UserStore<ApplicationUser>(db);
+						var userManager = new UserManager<ApplicationUser>(userStore);
+
+						List<ApplicationUser> list = userManager.Users.ToList();
+
+						foreach (ApplicationUser a in list)
+						{
+							if (a.UserName.Equals(username))
+							{
+								ret = a;
+								break;
+							}
+						}
+
+						if (ret == null)
+						{
+							return BadRequest("User does not exists.");
+						}
+
+						if (ret.ImageUrl != null)
+						{
+							File.Delete(HttpContext.Current.Server.MapPath("~/UploadFile/" + ret.ImageUrl));
+						}
+
+						var postedFile = httpRequest.Files[file];
+						string fileName = username + "_" + postedFile.FileName;
+						var filePath = HttpContext.Current.Server.MapPath("~/UploadFile/" + fileName);
+
+						ret.ImageUrl = fileName;
+
+						db.Entry(ret).State = EntityState.Modified;
+
+						try
+						{
+							db.SaveChanges();
+						}
+						catch (DbUpdateConcurrencyException e)
+						{
+							return StatusCode(HttpStatusCode.BadRequest);
+						}
+
+						postedFile.SaveAs(filePath);
+					}
+
+					return Ok();
+				}
+				else
+				{
+					return BadRequest();
+				}
+			}
+			catch (Exception e)
+			{
+				return InternalServerError(e);
+			}
+
 		}
 
 		[HttpPost]
