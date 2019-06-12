@@ -25,6 +25,8 @@ import { TimetableEditComponent } from './timetable-edit/timetable-edit.componen
 import { LineEditHttpService } from 'src/services/lineEdit.service';
 import { TimetableEditHttpService } from 'src/services/timetableEdit.service';
 import { StationEditHttpService } from 'src/services/stationEdit.service';
+import { VerificateUserComponent } from './verificate-user/verificate-user.component';
+import { VerificateUserHttpService } from '../services/verificateUser.service';
 
 const routes : Routes = [
   {path : "login", component: LoginComponent},
@@ -37,6 +39,7 @@ const routes : Routes = [
   {path: "stationEdit", component: StationEditComponent},
   {path: "lineEdit", component: LineEditComponent},
   {path: "cardVerification", component: CardVerificationComponent},
+  {path: "verificateUser", component: VerificateUserComponent},
   {path : "", component: HomeComponent, pathMatch:"full"},
   {path : "**", redirectTo: "login"},
 ]
@@ -53,7 +56,8 @@ const routes : Routes = [
     ProfilComponent,
     LineEditComponent,
     StationEditComponent,
-    TimetableEditComponent
+    TimetableEditComponent,
+    VerificateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,7 @@ const routes : Routes = [
     ReactiveFormsModule,
     UiModule  
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService,CardVerificationHttpService, RedVoznjeHttpService,CenovnikHttpService,ProfilHttpService, LineEditHttpService, TimetableEditHttpService, StationEditHttpService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService,CardVerificationHttpService, RedVoznjeHttpService,CenovnikHttpService,ProfilHttpService, LineEditHttpService, TimetableEditHttpService, StationEditHttpService,VerificateUserHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,7 +10,7 @@
         <a *ngIf="jwtIsAdmin()" class="nav-item nav-link" href="http://localhost:4200/lineEdit">UREDI LINIJE</a>
         <a *ngIf="jwtIsAdmin()" class="nav-item nav-link" href="http://localhost:4200/stationEdit">UREDI STANICE</a>
         <a *ngIf="jwtIsAdmin()" class="nav-item nav-link" href="http://localhost:4200/timetableEdit">UREDI REDOVE VOŽNJE</a>
-        <a *ngIf="jwtIsController()" class="nav-item nav-link" href="/">VERIFIKOVANJE KORISNIKA</a>
+        <a *ngIf="jwtIsController()" class="nav-item nav-link" href="http://localhost:4200/verificateUser">VERIFIKOVANJE KORISNIKA</a>
         <a *ngIf="jwtIsController()" class="nav-item nav-link" href="http://localhost:4200/cardVerification">VALIDACIJA KARTE</a>
         <a *ngIf="jwtIsUndefined()" class="nav-item nav-link" href="http://localhost:4200/profil">MOJ PROFIL</a>
         <a *ngIf="jwtIsUndefined()" (click)="logout()" href="http://localhost:4200/login">ODJAVI SE</a>

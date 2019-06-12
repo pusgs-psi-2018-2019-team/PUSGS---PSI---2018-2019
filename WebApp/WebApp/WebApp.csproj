@@ -260,6 +260,7 @@
     <Compile Include="Controllers\StationEditController.cs" />
     <Compile Include="Controllers\TimetableEditController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VerificateUserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

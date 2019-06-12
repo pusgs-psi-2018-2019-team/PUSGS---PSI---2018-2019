@@ -58,5 +58,14 @@ namespace WebApp.Controllers
             else
 				return StatusCode(HttpStatusCode.BadRequest);
 		}
-    }
+
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				db.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+	}
 }

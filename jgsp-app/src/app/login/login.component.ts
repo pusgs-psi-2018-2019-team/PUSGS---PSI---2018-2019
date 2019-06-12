@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, FormBuilder, Validators } from '@angular/forms';
-import { AuthHttpService } from 'src/services/http/auth.service';
+import { AuthHttpService } from '../../services/http/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
 
   loginForm = this.fb.group({
-    Username: ['', Validators.required],
+    UserName: ['', Validators.required],
     Password: ['', Validators.required]
   });
 
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   login(){
     let user: User = this.loginForm.value;
-    this.http.logIn(user.Username,user.Password).subscribe(temp => {
+    this.http.logIn(user.UserName,user.Password).subscribe(temp => {
       if(temp == "uspesno")
       {
         console.log(temp);
