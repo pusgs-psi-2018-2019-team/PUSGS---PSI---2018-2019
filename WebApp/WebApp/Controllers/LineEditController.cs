@@ -19,6 +19,24 @@ namespace WebApp.Controllers
 {
     public class LineEditController : ApiController
     {
+        private IUnitOfWork db;
+
+        public LineEditController() { }
+
+        public LineEditController(IUnitOfWork db)
+        {
+            this.db = db;
+        }
+
+        [Route("api/LineEdit/getAll")]
+        [HttpGet]
+        public IHttpActionResult GetAll()
+        {
+            var lines = db.RepositoryLines.GetAll();
+
+            return Ok(lines);
+        }
+    }
 		private ApplicationDbContext db = new ApplicationDbContext();
 		public IUnitOfWork Db { get; set; }
 
@@ -262,22 +280,4 @@ namespace WebApp.Controllers
 			base.Dispose(disposing);
 		}
 	}
-        private IUnitOfWork db;
-
-        public LineEditController() { }
-
-        public LineEditController(IUnitOfWork db)
-        {
-            this.db = db;
-        }
-
-        [Route("api/LineEdit/getAll")]
-        [HttpGet]
-        public IHttpActionResult GetAll()
-        {
-            var lines = db.RepositoryLines.GetAll();
-
-            return Ok(lines);
-        }
-    }
 }
