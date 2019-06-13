@@ -29,6 +29,7 @@ namespace WebApp.Controllers
         [Route("api/CardVerification/Check/{id}")]
         [HttpGet]
         [ResponseType(typeof(string))]
+		[Authorize(Roles = "Controller")]
         public IHttpActionResult GetCard(int id) 
         {
             Ticket ticket = db.RepositoryTicket.Find(x => x.Id.Equals(id)).FirstOrDefault();
@@ -47,7 +48,7 @@ namespace WebApp.Controllers
 					}
 					else
 					{
-						return StatusCode(HttpStatusCode.BadRequest);
+						return Ok("false");
 					}
 				}
 				else

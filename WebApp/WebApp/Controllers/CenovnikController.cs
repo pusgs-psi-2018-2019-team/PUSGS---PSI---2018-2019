@@ -86,6 +86,8 @@ namespace WebApp.Controllers
 		[Route("api/Cenovnik/KupiKartu")]
 		public IHttpActionResult KupiKartu(KupiKartuBindingModel karta)
 		{
+			bool provera = false;
+
 			if (!ModelState.IsValid)
 			{
 				return BadRequest(ModelState);
@@ -110,8 +112,14 @@ namespace WebApp.Controllers
 				var id = User.Identity.GetUserId();
 				user = userManager.FindById(id);
 				ticket.UserId = user.Id;
+				provera = true;
 			}
-			
+
+			if (provera == true)
+				if (user.VerificateAcc.Equals(0) || user.VerificateAcc.Equals(2))
+					if(!user.TypeId.Equals(3))
+						return Ok("false");
+
 			if (karta.TipKarte.Equals("Vremenska karta"))
 			{
 				vaziOd = DateTime.Now;
@@ -164,38 +172,33 @@ namespace WebApp.Controllers
 				return StatusCode(HttpStatusCode.BadRequest);
 			}
 
-			SendEmail("GSP Service", "kovacev.iceman@gmail.com", user.Email, "GSP Service, kupovina karte.", $"Salo pederu");
-			return Ok("uspesno");
-		}
-
-		private void SendEmail(string sendername, string sender, string recipient, string subject, string body)
-		{
-			// SMTP server,port,username,password should be obtained from C:\cornerstone\CFMLocal.txt (line 2?)
-			SmtpClient smtpClient = new SmtpClient("smtp.mailtrap.io", 2525)
+			if(user != null)
 			{
-				// Milan's mail trap free SMTP credentials : u: "3af75f9040edca", p: "bc2ed058a47d71"  | host: "smtp.mailtrap.io", 2525
-				Credentials = new System.Net.NetworkCredential()
+				try
 				{
-					UserName = "3af75f9040edca",
-					Password = "bc2ed058a47d71"
-				},
+					MailMessage mail = new MailMessage();
+					SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
-				EnableSsl = true
-			};
+					mail.From = new MailAddress("kovacev.iceman@gmail.com");
+					mail.To.Add("apialeksandar@yahoo.com");
+					mail.Subject = "Test Mail";
+					mail.Body = "This is for testing SMTP mail from GMAIL";
 
-			MailAddress from = new MailAddress(sender, sendername);
-			MailAddress to = new MailAddress(recipient, "");
-			MailMessage mailMessage = new MailMessage(from, to)
-			{
-				Subject = subject,
-				Body = body
-			};
+					SmtpServer.Port = 587;
+					SmtpServer.Credentials = new System.Net.NetworkCredential("username", "password");
+					SmtpServer.EnableSsl = true;
 
+					SmtpServer.Send(mail);
+				}
+				catch (Exception ex)
+				{
+					
+				}
+			}
 
-
-			smtpClient.Send(mailMessage);
+			return Ok("true");
 		}
-
+		
 		private bool KartaExists(int id)
 		{
 			return db.Ticket.Count(e => e.Id == id) > 0;

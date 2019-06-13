@@ -52,6 +52,7 @@ namespace WebApp.Controllers
 		//[ResponseType(typeof(string))]
 		[Route("IspisReda/{timetableTypeId}/{dayTypeId}/{lineId}")]
 		[HttpGet]
+		[AllowAnonymous]
 		public IHttpActionResult GetTimetableTimes(int timetableTypeId,int dayTypeId,int lineId) //vraca vremena polaska autobusa iz reda voznji
 		{
 			Timetable t = new Timetable();
@@ -63,6 +64,7 @@ namespace WebApp.Controllers
 		// GET: api/RedVoznje/RedVoznjiInfo
 		[ResponseType(typeof(RedVoznjeInfoBindingModel))]
 		[Route("RedVoznjiInfo")]
+		[AllowAnonymous]
 		public IHttpActionResult GetScheduleInfo()
 		{
 			List<TimetableType> timetableTypes = db.RepositoryTimetableTypes.GetAll().ToList();

@@ -57,9 +57,15 @@ export class CenovnikComponent implements OnInit {
     this.karta.Username = localStorage.loggedUser;
     this.karta.TipKarte = this.selectedTip;
     this.http.kupiKartu(this.karta).subscribe((data) => {
-      if(data == "uspesno")
+      console.log(data);
+      if(data == "true")
       {
         this.kupljena = "uspesno";
+      }
+      else if(data == "false")
+      {
+        alert("Nemate pravo da kupite kartu !!!");
+        this.kupljena = "neuspesno";
       }
       else
       {
