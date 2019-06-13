@@ -30,17 +30,22 @@ import { VerificateUserHttpService } from '../services/verificateUser.service';
 import { from } from 'rxjs';
 import { AuthGuardAdmin } from 'src/services/http/auth.guard';
 import { AuthGuardController } from 'src/services/http/auth2.guard';
+import { AuthGuardUser } from 'src/services/http/auth3.guard';
+import { AuthGuardLogIn } from 'src/services/http/auth4.guard';
+import { TicketPriceEditComponent } from './ticket-price-edit/ticket-price-edit.component';
+import { TicketPriceEditHttpService } from 'src/services/ticketPriceEdit.service';
 
 const routes : Routes = [
-  {path : "login", component: LoginComponent},
+  {path : "login", component: LoginComponent, canActivate: [AuthGuardLogIn]},
   {path : "home", component: HomeComponent},
-  {path : "register", component: RegisterComponent},
-  {path : "redvoznje", component: RedvoznjeComponent},
-  {path : "cenovnik", component: CenovnikComponent},
+  {path : "register", component: RegisterComponent, canActivate: [AuthGuardLogIn]},
+  {path : "redvoznje", component: RedvoznjeComponent, canActivate: [AuthGuardUser]},
+  {path : "cenovnik", component: CenovnikComponent, canActivate: [AuthGuardUser]},
   {path : "profil", component: ProfilComponent},
   {path: "timetableEdit", component: TimetableEditComponent, canActivate: [AuthGuardAdmin]},
   {path: "stationEdit", component: StationEditComponent, canActivate: [AuthGuardAdmin]},
   {path: "lineEdit", component: LineEditComponent, canActivate: [AuthGuardAdmin]},
+  {path: "ticketPriceEdit", component: TicketPriceEditComponent, canActivate: [AuthGuardAdmin]},
   {path: "cardVerification", component: CardVerificationComponent, canActivate: [AuthGuardController]},
   {path: "verificateUser", component: VerificateUserComponent, canActivate: [AuthGuardController]},
   {path : "", component: HomeComponent, pathMatch:"full"},
@@ -60,7 +65,8 @@ const routes : Routes = [
     LineEditComponent,
     StationEditComponent,
     TimetableEditComponent,
-    VerificateUserComponent
+    VerificateUserComponent,
+    TicketPriceEditComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +76,7 @@ const routes : Routes = [
     ReactiveFormsModule,
     UiModule  
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService,CardVerificationHttpService, RedVoznjeHttpService,CenovnikHttpService,ProfilHttpService, LineEditHttpService, TimetableEditHttpService, StationEditHttpService,VerificateUserHttpService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}, AuthHttpService,CardVerificationHttpService, RedVoznjeHttpService,CenovnikHttpService,ProfilHttpService, LineEditHttpService, TimetableEditHttpService, StationEditHttpService,VerificateUserHttpService, TicketPriceEditHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

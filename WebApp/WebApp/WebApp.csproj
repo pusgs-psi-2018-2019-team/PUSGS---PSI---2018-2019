@@ -258,6 +258,7 @@
     <Compile Include="Controllers\ProfilController.cs" />
     <Compile Include="Controllers\RedVoznjeController.cs" />
     <Compile Include="Controllers\StationEditController.cs" />
+    <Compile Include="Controllers\TicketPriceEditController.cs" />
     <Compile Include="Controllers\TimetableEditController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VerificateUserController.cs" />

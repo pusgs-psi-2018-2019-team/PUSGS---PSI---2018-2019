@@ -96,7 +96,7 @@
 				context.SaveChanges();
 			}
 
-			//  TimetableTzpe
+			//  TimetableType
 			if (!context.TimetableType.Any(t => t.Name == "Gradski"))
 			{
 				TimetableType timetableType = new TimetableType() { Name = "Gradski", Id =1 };
@@ -170,24 +170,17 @@
                 context.SaveChanges();
             }
 
-            if (!context.Pricelist.Any(t => t.Id == 2))
-            {
-                Pricelist pricelist = new Pricelist() { Id = 2, From = DateTime.Now.ToString(), To = DateTime.Now.ToString() };
-                context.Pricelist.Add(pricelist);
-                context.SaveChanges();
-            }
-
             // Stations
             if (!context.Station.Any(t => t.Name == "Prva"))
             {
-                Station station = new Station() { Id = 1, Name = "Prva", Address = "Adresa Prve", X = 22, Y = 35 };
+                Station station = new Station() { Id = 1, Name = "Prva stanica", Address = "Adresa Prve Stanice", X = 22, Y = 35 };
                 context.Station.Add(station);
                 context.SaveChanges();
             }
 
             if (!context.Station.Any(t => t.Name == "Druga"))
             {
-                Station station = new Station() { Id = 1, Name = "Prva", Address = "Adresa Druge", X = 22, Y = 35 };
+                Station station = new Station() { Id = 1, Name = "Druga stanica", Address = "Adresa Druge Stanice", X = 22, Y = 35 };
                 context.Station.Add(station);
                 context.SaveChanges();
             }
@@ -231,6 +224,27 @@
                 context.TicketPrice.Add(ticketPrice);
                 context.SaveChanges();
             }
-		}
+
+            if (!context.TicketPrice.Any(t => t.Id == 2))
+            {
+                TicketPrice ticketPrice = new TicketPrice() { Price = 150, PricelistId = 1, TicketTypeId = 2 };
+                context.TicketPrice.Add(ticketPrice);
+                context.SaveChanges();
+            }
+
+            if (!context.TicketPrice.Any(t => t.Id == 3))
+            {
+                TicketPrice ticketPrice = new TicketPrice() { Price = 1500, PricelistId = 1, TicketTypeId = 3 };
+                context.TicketPrice.Add(ticketPrice);
+                context.SaveChanges();
+            }
+
+            if (!context.TicketPrice.Any(t => t.Id == 4))
+            {
+                TicketPrice ticketPrice = new TicketPrice() { Price = 5000, PricelistId = 1, TicketTypeId = 4 };
+                context.TicketPrice.Add(ticketPrice);
+                context.SaveChanges();
+            }
+        }
     }
 }

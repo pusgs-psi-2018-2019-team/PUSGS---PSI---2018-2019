@@ -3,4 +3,5 @@ export class Timetable{
     TimtableTypeId: number
     DayTypeId: number
     Times: string
+    LineId: number
 }

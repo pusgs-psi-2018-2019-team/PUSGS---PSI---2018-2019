@@ -11,10 +11,6 @@ export class LineEditComponent implements OnInit {
   constructor(private http: LineEditHttpService) { }
 
   ngOnInit() {
-    this.http.getAll().subscribe((line) => {
-      //this.redVoznjeInfo = line;
-      err => console.log(err);
-    });
   }
 
 }

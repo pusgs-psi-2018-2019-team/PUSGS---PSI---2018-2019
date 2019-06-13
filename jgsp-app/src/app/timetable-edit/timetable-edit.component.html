@@ -1,35 +1,46 @@
-<table border="1">
-    <tr>
-      <th>ID tipa reda voznje</th>
-      <th>ID tipa dana</th>
-      <th>ID linije</th>
-      <th>Polasci</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>10:00, 10:45, 12:50</td>
-      <td><input type="submit" value="Izmeni"/></td>
-      <td><input type="submit" value="Obrisi"/></td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>1</td>
-        <td>2</td>
-        <td>22:00</td>
-        <td><input type="submit" value="Izmeni"/></td>
-        <td><input type="submit" value="Obrisi"/></td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>3</td>
-        <td>1</td>
-        <td>5:00, 6:00, 8:00, 12:30</td>
-        <td><input type="submit" value="Izmeni"/></td>
-        <td><input type="submit" value="Obrisi"/></td>
-    </tr>
-      <tr>
-      <td ><input type="submit" value="Dodaj red voznje"/></td>
-      </tr>
-  </table>
+<label>DODAVANJE NOVOG REDA VOZNJE</label>
+<form [formGroup]="timetableAdd" (ngSubmit)="TimetableAdd()">
+    <label for="selectedType" class="col-sm-2 col-form-label">Tip: </label>
+    <select [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedType">
+        <option *ngFor="let type of types">{{type}}</option>
+    </select> 
+    <label for="selectedDayType" class="col-sm-2 col-form-label">Tip dana: </label>
+    <select [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedDayType">
+        <option *ngFor="let dayType of dayTypes">{{dayType}}</option>
+    </select>  
+    <label for="selectedLine" class="col-sm-2 col-form-label">Linija: </label>
+    <select [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedLine">
+        <option *ngFor="let line of allLines">{{line.SerialNumber}}</option>
+    </select>  
+    <label for="Times" class="col-sm-2 col-form-label">Vremena polazaka: </label>
+    <input type="text" class="form-control" formControlName="Times" id="Times"> 
+    <button type="submit" class="btn btn-secondary">Dodaj</button>
+</form>
+
+<label>IZMENA POSTOJECEG</label>
+<form [formGroup]="timetableEdit" (ngSubmit)="Izaberi()">
+  <label for="selectedLine" class="col-sm-2 col-form-label">Linija: </label>
+  <select [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedTimetable">
+      <option *ngFor="let timetable of allTimetables" [ngValue]="timetable">{{timetable.Id}}</option>
+  </select>
+  <button type="submit" class="btn btn-secondary">Izaberi</button>
+</form>
+<form [formGroup]="timetableEdit" (ngSubmit)="Izmeni()">
+    <select [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedType">
+        <option *ngFor="let type of types">{{type}}</option>
+    </select> 
+    <label for="selectedDayType" class="col-sm-2 col-form-label">Tip dana: </label>
+    <select [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedDayType">
+        <option *ngFor="let dayType of dayTypes">{{dayType}}</option>
+    </select>  
+    <label for="selectedLine" class="col-sm-2 col-form-label">Linija: </label>
+    <select [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedLine">
+        <option *ngFor="let line of allLines">{{line.SerialNumber}}</option>
+    </select>  
+    <label for="Times" class="col-sm-2 col-form-label">Vremena polazaka: </label>
+    <input type="text" class="form-control" formControlName="Times" id="Times"> 
+    <button type="submit" class="btn btn-secondary">Izmeni</button>
+</form>
+<form [formGroup]="timetableEdit" (ngSubmit)="Obrisi()">
+  <button type="submit" class="btn btn-secondary">Obrisi</button>
+</form>
