@@ -13,6 +13,11 @@
       <p>Address:<span class="fa fa-user"></span><input Placeholder="Address" type="email" formControlName="Address" required></p><br>
       <p>Date:<span class="fa fa-user"></span><input Placeholder="Date" type="date" formControlName="Date" required></p><br>
       <p>PhoneNumber:<span class="fa fa-user"></span><input Placeholder="PhoneNumber" type="text" formControlName="PhoneNumber" required></p><br>      
+      <select [(ngModel)]="tipKorisnika" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let t of tipoviKorisnika">
+          {{t}} 
+        </option>
+      </select>
       <div class="form-group row">
         <input type="file" formControlName="ImageUrl" (change)="onFileSelected($event)" />
       </div>

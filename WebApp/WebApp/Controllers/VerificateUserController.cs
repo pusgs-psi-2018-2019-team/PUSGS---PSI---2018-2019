@@ -34,7 +34,7 @@ namespace WebApp.Controllers
 		}
 
 		// GET: api/UserVerification/Users
-		[AllowAnonymous]
+		[Authorize(Roles = "Controller")]
 		[ResponseType(typeof(List<ApplicationUser>))]
 		[Route("api/UserVerification/Users")]
 		public IHttpActionResult GetUser()
@@ -58,7 +58,7 @@ namespace WebApp.Controllers
 		}
 
 		// GET: api/UserVerification/SelectedUser/{username}
-		[AllowAnonymous]
+		[Authorize(Roles = "Controller")]
 		[ResponseType(typeof(ApplicationUser))]
 		[Route("api/UserVerification/SelectedUser/{id}")]
 		public IHttpActionResult GetSelectedUser(string id)
@@ -140,7 +140,7 @@ namespace WebApp.Controllers
 		}
 
 		// GET: api/UserVerification/Users
-		[AllowAnonymous]
+		[Authorize(Roles = "Controller")]
 		[HttpGet]
 		[ResponseType(typeof(ApplicationUser))]
 		[Route("api/UserVerification/Odluka/{id}/{odluka}")]

@@ -76,6 +76,10 @@ namespace WebApp.Models
 		[Required]
 		[Display(Name = "ImageUrl")]
 		public string ImageUrl { get; set; }
+
+		[Required]
+		[Display(Name = "TypeId")]
+		public string TypeId { get; set; }
 	}
 
     public class RegisterExternalBindingModel

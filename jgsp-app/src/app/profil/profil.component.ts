@@ -34,14 +34,14 @@ export class ProfilComponent implements OnInit {
       if (data.VerificateAcc == "0") {
         this.approved = "Na cekanju";
       } 
-      else if(data.Verificate == "1"){
+      else if(data.VerificateAcc == "1"){
         this.approved = "Odobren";
       }
       else
       {
         this.approved = "Nije odobren";
       }
-
+      
       if (data.TypeId == "1") {
         data.UserType = "Djak/Student";
       }

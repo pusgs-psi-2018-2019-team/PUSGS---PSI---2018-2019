@@ -333,7 +333,14 @@ namespace WebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Username, Email = model.Email, TypeId = 1, Name = model.Name, Password = model.Password, Date = model.Date, ConfirmPassword = model.ConfirmPassword,Surname = model.Surname, VerificateAcc = 0, Address = model.Address, PhoneNumber = model.PhoneNumber};
+			int verAcc = 0;
+
+			if(model.TypeId.Equals("3"))
+			{
+				verAcc = 1;
+			}
+
+            var user = new ApplicationUser() { UserName = model.Username, Email = model.Email, TypeId = Int32.Parse(model.TypeId), Name = model.Name, Password = model.Password, Date = model.Date, ConfirmPassword = model.ConfirmPassword,Surname = model.Surname, VerificateAcc = verAcc, Address = model.Address, PhoneNumber = model.PhoneNumber};
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

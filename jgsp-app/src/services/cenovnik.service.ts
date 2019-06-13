@@ -36,7 +36,7 @@ export class CenovnikHttpService{
                 }
             }
             this.http.post<any>(this.base_url + "/api/Cenovnik/KupiKartu",data,httpOptions).subscribe(data => {
-                observer.next("uspesno");
+                observer.next(data);
                 observer.complete();
             },
             err => {
